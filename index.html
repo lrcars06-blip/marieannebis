@@ -7,14 +7,14 @@
 <meta name="description" content="Composez votre fauteuil, inventez votre canapé, habillez une pièce entière en 3D. Marie-Anne Becq, tapissière à Rampont (Meuse), chiffre et réalise votre projet.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Instrument+Sans:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Instrument+Sans:wght@400;500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <style>
 :root{
   --encre:#15171B;--nuit:#17191E;--nuit-2:#212429;
   --soie:#F3EFE6;--soie-2:#E8E1D2;--lin:#CBC0AA;
   --garance:#A4392D;--garance-2:#7E2A21;--brume:#6E7076;
-  --serif:"Fraunces",Georgia,serif;--sans:"Instrument Sans",system-ui,sans-serif;--script:"Pinyon Script",cursive;
+  --serif:"Fraunces",Georgia,serif;--sans:"Instrument Sans",system-ui,sans-serif;--script:"Jost","Instrument Sans",system-ui,sans-serif;
   --gutter:clamp(20px,5vw,80px);--hd:66px;--ease:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -39,7 +39,7 @@ h1 i,h2 i,h3 i{font-style:italic}
 /* ---------- en-tête ---------- */
 header{position:fixed;top:0;left:0;right:0;height:var(--hd);z-index:40;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,3vw,40px);background:color-mix(in srgb,var(--nuit) 94%,transparent);color:var(--soie);backdrop-filter:blur(10px)}
 .marque{display:flex;align-items:baseline;gap:12px}
-.marque b{font-family:var(--script);font-weight:400;font-size:30px;line-height:1}
+.marque b{font-family:var(--script);font-weight:300;font-size:17px;line-height:1;letter-spacing:.3em;text-transform:uppercase;white-space:nowrap}
 .marque span{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--lin)}
 header nav{display:flex;gap:6px;align-items:center}
 header nav a{font-size:14px;padding:8px 14px;border-radius:999px;opacity:.72;transition:opacity .2s,background .2s}
@@ -90,15 +90,15 @@ header nav a.retour{opacity:.5;font-size:13px}
 .pros ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:30px}
 .pros li{font-size:14px;padding:7px 14px;border:1px solid var(--lin);border-radius:999px}
 footer{background:var(--nuit);color:rgba(243,239,230,.6);padding:30px var(--gutter);font-size:14px;display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:space-between;align-items:center}
-footer b{font-family:var(--script);font-weight:400;font-size:28px;color:var(--soie)}
+footer b{font-family:var(--script);font-weight:300;font-size:17px;letter-spacing:.3em;text-transform:uppercase;color:var(--soie)}
 
 /* plan-séquence d'accueil */
-.cine{height:360vh;position:relative;background:var(--nuit)}
+.cine{height:520vh;position:relative;background:var(--nuit)}
 .cine .plan{position:sticky;top:0;height:100svh;overflow:hidden;color:var(--soie)}
 .cine video,.cine canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.82)}
 .cine .ombre{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,23,27,.5),rgba(21,23,27,.02) 35%,rgba(21,23,27,.86) 100%)}
 .cine .contenu{position:absolute;left:0;right:0;bottom:0;padding:0 var(--gutter) clamp(54px,8vh,100px);will-change:opacity,transform}
-.cine .c2{opacity:0}
+.cine .c2,.cine .cmid{opacity:0;pointer-events:none}
 .cine h1{font-size:clamp(48px,8.4vw,142px);line-height:.95;margin-top:14px}
 .cine .eyebrow{color:var(--lin);font-size:19px}
 .cine .bas{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:30px;flex-wrap:wrap}
@@ -137,13 +137,13 @@ footer b{font-family:var(--script);font-weight:400;font-size:28px;color:var(--so
 #intro .voile{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(11,11,13,.1),rgba(11,11,13,.72))}
 #intro .titre{position:relative;text-align:center;padding:0 20px}
 #intro svg{width:min(90vw,980px);height:auto;overflow:visible;filter:drop-shadow(0 4px 30px rgba(0,0,0,.6))}
-#intro svg text{font-family:var(--script);font-size:136px;fill:var(--soie);fill-opacity:0;stroke:var(--soie);stroke-width:1.1;stroke-linecap:round;stroke-dasharray:1500;stroke-dashoffset:1500}
-#intro .sous{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(20px,2.4vw,34px);opacity:0;transform:translateY(12px);margin-top:-6px}
+#intro svg text{font-family:var(--script);font-weight:300;font-size:58px;letter-spacing:20px;fill:var(--soie);fill-opacity:0;stroke:var(--soie);stroke-width:.7;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420}
+#intro .sous{font-family:var(--script);font-weight:300;font-size:clamp(12px,1.25vw,17px);letter-spacing:.36em;text-transform:uppercase;opacity:0;transform:translateY(12px);margin-top:4px;color:var(--lin)}
 #intro .lieu{font-size:12px;letter-spacing:.34em;text-transform:uppercase;margin-top:18px;opacity:0;color:var(--lin)}
-#intro.joue svg text{animation:trace 3.2s cubic-bezier(.45,0,.2,1) .9s forwards,remplir 1.1s ease 3.4s forwards}
+#intro.joue svg text{animation:trace 2.2s cubic-bezier(.45,0,.2,1) .5s forwards,remplir 1s ease 1.6s forwards}
 #intro.joue .sous{animation:monte 1.2s var(--ease) 3.7s forwards}
 #intro.joue .lieu{animation:monte 1.2s var(--ease) 4.3s forwards}
-#intro.joue .titre{animation:part 1.3s ease 7.3s forwards}
+#intro.joue .titre{animation:part 1.2s ease 6.3s forwards}
 #intro .passer{position:absolute;right:clamp(18px,3vw,40px);bottom:clamp(18px,3vw,36px);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--soie);padding:12px 20px;border:1px solid rgba(243,239,230,.4);border-radius:999px;transition:background .25s,color .25s}
 #intro .passer:hover{background:var(--soie);color:var(--encre)}
 @keyframes trace{to{stroke-dashoffset:0}}@keyframes remplir{to{fill-opacity:1}}@keyframes monte{to{opacity:1;transform:none}}@keyframes part{to{opacity:0}}
@@ -363,7 +363,7 @@ textarea{resize:vertical;min-height:70px}
   .marque span,header nav a.retour{display:none}
   header nav a{padding:7px 9px;font-size:13px}
 }
-@media(max-width:560px){.etapes ol{grid-template-columns:1fr}.deux{grid-template-columns:1fr}.marque b{font-size:24px}}
+@media(max-width:560px){.etapes ol{grid-template-columns:1fr}.deux{grid-template-columns:1fr}.marque b{font-size:13px;letter-spacing:.22em}}
 .outils{position:absolute;z-index:3;left:26px;top:104px;gap:5px;flex-wrap:wrap}
 .outils button{font-size:13px;padding:8px 13px;border-radius:999px;background:rgba(243,239,230,.92);border:1px solid var(--lin);box-shadow:0 2px 10px rgba(0,0,0,.08)}
 .outils button.on{background:var(--garance);border-color:var(--garance);color:#fff}
@@ -371,20 +371,20 @@ textarea{resize:vertical;min-height:70px}
 @media(max-width:980px){
   :root{--hd:56px}
   header{padding:0 12px}
-  .marque b{font-size:20px;white-space:nowrap}
+  .marque b{font-size:12px;letter-spacing:.2em;white-space:nowrap}
   header nav{gap:0}
   header nav a{white-space:nowrap;padding:7px 6px;font-size:12.5px}
   header nav a[data-v=accueil]{display:none}
   header nav a.projet{margin-left:2px;padding:5px 8px}
   header nav a.projet em{min-width:16px;height:16px;font-size:10.5px;margin-left:3px;padding:0 4px}
-  .cine{height:360vh}
+  .cine{height:480vh}
   .cine h1{font-size:clamp(40px,11.5vw,64px)}
   .cine .contenu{padding-bottom:64px}
   .cine .bas{margin-top:18px;gap:18px}
   .cine .cta .btn{padding:11px 18px;font-size:14px}
   .cine .defiler,.cine .mention{top:calc(var(--hd) + 12px);font-size:9px}
   #intro svg{width:96vw}
-  #intro .sous{font-size:21px;margin-top:0}
+  #intro .sous{font-size:11px;margin-top:6px}#intro .lieu{font-size:9.5px;letter-spacing:.2em}#intro .sous{letter-spacing:.3em}
   .studio.on{grid-template-rows:42% 58%}
   .studio.libre.on{grid-template-rows:60% 40%}
   .outils{top:auto;bottom:52px;left:10px;right:10px}
@@ -418,10 +418,10 @@ textarea{resize:vertical;min-height:70px}
 <body>
 
 <div id="intro" aria-label="Marie-Anne Becq, l'atelier sur mesure">
-  <video muted playsinline webkit-playsinline autoplay preload="auto" poster="media/e5045a8606a9.jpg" src="media/3eed1559e2df.mp4"></video>
+  <video muted playsinline webkit-playsinline autoplay preload="auto" poster="media/e5045a8606a9.jpg" src="media/5566e33db667.mp4"></video>
   <div class="voile"></div>
   <div class="titre">
-    <svg viewBox="0 0 980 230" role="img" aria-label="Marie-Anne Becq"><text x="490" y="165" text-anchor="middle">Marie-Anne Becq</text></svg>
+    <svg viewBox="0 0 980 120" role="img" aria-label="Marie-Anne Becq"><text x="500" y="82" text-anchor="middle">MARIE-ANNE BECQ</text></svg>
     <div class="sous">l'atelier sur mesure</div>
     <div class="lieu">Tapissière · couture d'ameublement</div>
   </div>
@@ -429,7 +429,7 @@ textarea{resize:vertical;min-height:70px}
 </div>
 
 
-<script>(function(){if(window.__sansIntro)return;var I=document.getElementById('intro'),v=I.querySelector('video');try{history.replaceState(null,'','#accueil')}catch(e){}document.body.style.overflow='hidden';function go(){if(window.__introLance)return;window.__introLance=Date.now();I.classList.add('joue');var p=v.play();p&&p.catch(function(){window.__introBloque=1})}function pret(){(document.fonts&&document.fonts.load?document.fonts.load('136px "Pinyon Script"'):Promise.resolve()).then(go,go)}if(v.readyState>=3)pret();else v.addEventListener('canplay',pret,{once:true});setTimeout(go,3500)})()</script>
+<script>(function(){if(window.__sansIntro)return;var I=document.getElementById('intro'),v=I.querySelector('video');try{history.replaceState(null,'','#accueil')}catch(e){}document.body.style.overflow='hidden';function go(){if(window.__introLance)return;window.__introLance=Date.now();I.classList.add('joue');var p=v.play();p&&p.catch(function(){window.__introBloque=1})}function pret(){(document.fonts&&document.fonts.load?document.fonts.load('300 58px "Jost"'):Promise.resolve()).then(go,go)}if(v.readyState>=3)pret();else v.addEventListener('canplay',pret,{once:true});setTimeout(go,3500)})()</script>
 
 <header>
   <a class="marque" href="#accueil"><b>Marie-Anne Becq</b><span>l'atelier sur mesure</span></a>
@@ -445,7 +445,7 @@ textarea{resize:vertical;min-height:70px}
 <!-- ======================= ACCUEIL ======================= -->
 <main class="vue" id="v-accueil">
   <section class="cine" id="cine"><div class="plan">
-    <video id="cine-v" muted playsinline preload="auto" poster="media/0300cbd9a219.jpg" src="media/f86fcddad7bc.mp4"></video>
+    <video id="cine-v" muted playsinline preload="auto" poster="media/dfc8c2996ba0.jpg" src="media/680f41d27812.mp4"></video>
     <div class="ombre"></div>
     <div class="contenu c1">
       <span class="eyebrow">L'atelier sur mesure</span>
@@ -455,11 +455,16 @@ textarea{resize:vertical;min-height:70px}
         <div class="cta"><a class="btn plein" href="#mobilier">Composer un siège</a><a class="btn clair" href="#piece">Habiller une pièce</a></div>
       </div>
     </div>
+    <div class="contenu cmid">
+      <span class="eyebrow">Les étoffes de l'atelier</span>
+      <h1>Les grandes maisons,<br><i>à portée de main.</i></h1>
+      <div class="bas"><p>Pierre Frey, Castelbajac, Lelièvre, Jean Paul Gaultier, Casamance : plus de 500 références à poser sur vos sièges, vos murs et vos sols.</p></div>
+    </div>
     <div class="contenu c2">
-      <span class="eyebrow">Du salon à la cuisine</span>
+      <span class="eyebrow">À l'établi</span>
       <h1>Toute la maison,<br><i>cousue main.</i></h1>
       <div class="bas">
-        <p>Chaises médaillon habillées de toile noir et blanc, fauteuil assorti, tenture au mur, rideaux de velours : chaque pièce se compose ici, tissu par tissu.</p>
+        <p>Sièges, rideaux, têtes de lit, tentures : chaque projet composé ici est repris à l'atelier par Marie-Anne Becq, chiffré puis cousu à la main.</p>
         <div class="cta"><a class="btn plein" href="#piece">Habiller une pièce</a><a class="btn clair" href="#mobilier">Composer un siège</a></div>
       </div>
     </div>
@@ -1411,24 +1416,24 @@ function boucle(unique){
 const I=$('#intro'),IV=$('video',I);let iT;
 function finIntro(){if(I.classList.contains('fin'))return;I.classList.add('fin');if(vue==='accueil')document.body.style.overflow='';clearTimeout(iT);iT=setTimeout(()=>{I.style.display='none';IV.pause()},1400)}
 function intro(){clearTimeout(iT);I.style.display='';I.classList.remove('fin','joue');void I.offsetWidth;document.body.style.overflow='hidden';scrollTo(0,0);IV.pause();
-  let parti=false;const go=()=>{if(parti)return;parti=true;I.classList.add('joue');try{IV.currentTime=0}catch(e){}const pr=IV.play();pr&&pr.catch(()=>{});clearTimeout(iT);iT=setTimeout(finIntro,13500)};
-  const pret=()=>(document.fonts&&document.fonts.load?document.fonts.load('136px "Pinyon Script"'):Promise.resolve()).then(go,go);
+  let parti=false;const go=()=>{if(parti)return;parti=true;I.classList.add('joue');try{IV.currentTime=0}catch(e){}const pr=IV.play();pr&&pr.catch(()=>{});clearTimeout(iT);iT=setTimeout(finIntro,12000)};
+  const pret=()=>(document.fonts&&document.fonts.load?document.fonts.load('300 58px "Jost"'):Promise.resolve()).then(go,go);
   if(IV.readyState>=3)pret();else IV.addEventListener('canplay',pret,{once:true});setTimeout(go,3500)}
 IV.addEventListener('ended',finIntro);setTimeout(()=>{if(I.style.display!=='none'&&!I.classList.contains('fin')&&(window.__introBloque||IV.currentTime<.15)){clearTimeout(iT);iT=setTimeout(finIntro,3800)}},2600);$('.passer',I).onclick=finIntro;
 $('.marque').addEventListener('click',e=>{e.preventDefault();if(location.hash!=='#accueil')location.hash='accueil';intro()});
 /* travelling piloté par le défilement */
-{const cine=$('#cine'),cv=$('#cine-v'),c1=$('.c1',cine),c2=$('.c2',cine),jg=$('.jauge i',cine);let cur=0;
-  const SEQ=["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],SEQB=["media/travelling-1-86baacaf.js", "media/travelling-2-cfab8a4f.js", "media/travelling-3-0177eaf7.js", "media/travelling-4-5e81b9b7.js", "media/travelling-5-64177547.js", "media/travelling-6-59b01dbb.js"],seq=SEQ.length&&matchMedia('(pointer:coarse),(max-width:980px)').matches,fr=[];let cz=null,vu=-1;
+{const cine=$('#cine'),cv=$('#cine-v'),c1=$('.c1',cine),c2=$('.c2',cine),c3=$('.cmid',cine),jg=$('.jauge i',cine);let cur=0;
+  const SEQ=["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],SEQB=["media/travelling-1-452ab6fe.js", "media/travelling-2-fefcdfbb.js", "media/travelling-3-e5a45575.js", "media/travelling-4-80abc2e6.js", "media/travelling-5-9b57e759.js", "media/travelling-6-c98594d4.js"],seq=SEQ.length&&matchMedia('(pointer:coarse),(max-width:980px)').matches,fr=[];let cz=null,vu=-1;
   if(seq){cz=el('canvas',{id:'cine-c'});cv.after(cz);cv.style.display='none';cv.removeAttribute('src');try{cv.load()}catch(e){}const g=cz.getContext('2d');
     const poseF=(u,i)=>{const im=new Image();im.decoding='async';im.onload=()=>{fr[i]=im;if(!i){cz.width=im.naturalWidth;cz.height=im.naturalHeight;g.drawImage(im,0,0);vu=0}};im.src=u};if(SEQB){window.__trv=o=>{for(const i in o)poseF(o[i],+i)};SEQB.forEach(u=>{const x=document.createElement('script');x.src=u;x.async=false;document.head.append(x)})}else SEQ.forEach(poseF);
     cz._dessine=f=>{let a=Math.floor(f);const b=Math.min(SEQ.length-1,a+1);let t=f-a;if(!fr[a]){while(a>0&&!fr[a])a--;t=0}if(!fr[a])return;if(!fr[b])t=0;const cle=a+Math.round(t*10)/10;if(cle===vu)return;g.globalAlpha=1;g.drawImage(fr[a],0,0);if(t>.05){g.globalAlpha=t;g.drawImage(fr[b],0,0);g.globalAlpha=1}vu=cle}}
   const pas=()=>{if(vue==='accueil'){const p=clamp(scrollY/Math.max(1,cine.offsetHeight-innerHeight),0,1),q=clamp((p-.06)/.7,0,1),e=q*q*(3-2*q),d=cv.duration||0;
     if(seq){cur+=(e-cur)*.16;cz._dessine(cur*(SEQ.length-1))}else if(d){const cible=e*(d-.05);cur+=(cible-cur)*.16;if(Math.abs(cv.currentTime-cur)>.012&&!cv.seeking)cv.currentTime=cur}
-    c1.style.opacity=clamp(1-p*5,0,1);c1.style.transform=`translateY(${-p*120}px)`;c1.style.pointerEvents=p>.15?'none':'';const o2=clamp((p-.8)/.12,0,1);c2.style.opacity=o2;c2.style.transform=`translateY(${(1-o2)*40}px)`;c2.style.pointerEvents=o2<.5?'none':'';jg.style.transform=`scaleX(${p})`}
+    c1.style.opacity=clamp(1-p*5,0,1);c1.style.transform=`translateY(${-p*120}px)`;c1.style.pointerEvents=p>.15?'none':'';const o2=clamp((p-.8)/.12,0,1);c2.style.opacity=o2;c2.style.transform=`translateY(${(1-o2)*40}px)`;c2.style.pointerEvents=o2<.5?'none':'';const o3=clamp((p-.33)/.07,0,1)*clamp((.6-p)/.07,0,1);c3.style.opacity=o3;c3.style.transform=`translateY(${(1-clamp((p-.33)/.07,0,1))*40-clamp((p-.53)/.07,0,1)*40}px)`;jg.style.transform=`scaleX(${p})`}
     requestAnimationFrame(pas)};pas()}
 try{history.replaceState(null,'','#accueil')}catch(e){}
 charger();sauver();aller();{const b2=()=>{const B=window.BQ2;if(!B)return;CATALOGUE.forEach(x=>{if(B[x.id])x.img=B[x.id]});AP.forEach(x=>{if(B['ap-'+x.k])x.img=B['ap-'+x.k]});APM.forEach(x=>{if(B['apm-'+x.k])x.img=B['apm-'+x.k]});for(const k in TAPIS)if(B['tp-'+k])TAPIS[k].img=B['tp-'+k];for(const k in B)if(k.startsWith('RB:'))REEL.bois[k.slice(3)]=B[k];try{if(vue==='mobilier')majPhotoM()}catch(e){}try{if(vue==='piece'){majItems();panneauP();placerAP()}}catch(e){}window.__etoffes&&__etoffes();window.__ap&&__ap()};addEventListener('bq2',b2);b2()}
-window.__sansIntro?(I.style.display='none'):window.__introLance?(IV.ended?finIntro():(iT=setTimeout(finIntro,Math.max(1500,13500-(Date.now()-window.__introLance))))):intro();boucle();
+window.__sansIntro?(I.style.display='none'):window.__introLance?(IV.ended?finIntro():(iT=setTimeout(finIntro,Math.max(1500,12000-(Date.now()-window.__introLance))))):intro();boucle();
 window.__atelier={S,M,P,get m(){return brouillonM},get p(){return brouillonP},set p(v){brouillonP=v},majP,majItems,cadrerP,panneauP,majPhotoP,ambiance,vue3(){vueP='3d';panneauP();majPhotoP();P.taille();majP()}};
 </script>
 </body>
